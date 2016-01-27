@@ -43,20 +43,30 @@ puts " 4 | 5 | 6 "
 puts "-----------"
 puts " 7 | 8 | 9 "
 sleep 3
+  
+  if input.chomp.strip == "0" || "1"
+    computer_difficulty
 
-  if input.chomp.strip == "0"
-      puts "Ostrich Battle Royale!"
-      game = Game.new(player_1 = Player::Computer.new("X"), player_2 = Player::Computer.new("O"), board = Board.new)
-      game.play
-
-  elsif input.chomp.strip == "1"
-      puts "Ostrich V. Player 2!"
-      game = Game.new(computer = Player::Computer.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
-      game.play
-
-  elsif input.chomp.strip == "2"
+  elsif 
       puts "Player 1 V. Player 2!"
       game = Game.new(player_1 = Player::Human.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
+      game.play
+  end
+end
+
+def computer_difficulty
+  puts "Is this 1 - A full on Ostritch game or 2 - A game of wits against an ostritch?"
+    input = gets
+    if input.chomp.strip == "1"
+      puts "Ostrich Battle Royale!"
+      game = Game.new(player_1 = Player::Computer_easy.new("X"), player_2 = Player::Computer_easy.new("O"), board = Board.new)
+      game.play
+
+    else input.chomp.strip == "2"
+      puts "At what difficulty, would you like to play? 1. Easy, 2. Medium or 3. Hard?"
+      input = gets
+      puts "Ostrich V. Player 2!"
+      game = Game.new(computer = Player::Computer_easy.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
       game.play
   end
 end
