@@ -91,7 +91,7 @@ class Player::Computer_medium <Player
 
  def move(board)   
 
-      elsif one_move_away(board) != nil
+      if one_move_away(board) != nil
         one_move_away(board)
       elsif block(board) != nil
         block(board)
@@ -116,13 +116,7 @@ class Player::Computer_medium <Player
     end     
   end
  
-  def rand_corner(board)
-    rand = board.cells[0,2,6,8]
-    random = rand.sample
-      if board.taken?(random.to_s)
-        rand_corner(board)
-      end
-  end
+
 
 end
 
