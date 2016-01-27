@@ -72,13 +72,13 @@ def computer_difficulty
       puts "At what difficulty, would you like to play? 1. Easy, 2. Medium or 3. Hard?"
       input = gets
       puts "Ostrich V. Player 2!"
-      if input == "1"
+      if input.chomp.strip == "1"
         game = Game.new(computer = Player::Computer_easy.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
         game.play
-      elsif input == "2"
+      elsif input.chomp.strip == "2"
         game = Game.new(computer = Player::Computer_medium.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
         game.play
-      elsif input == "3"
+      elsif input.chomp.strip == "3"
         game = Game.new(computer = Player::Computer_hard.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
         game.play
       end

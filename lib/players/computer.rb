@@ -41,7 +41,8 @@ end
 
 class Player::Computer_medium <Player
 
-  attr_accessor :board
+  attr_accessor :board 
+  attr_reader 
 
  WIN_COMBINATIONS = [
     [0,1,2],
@@ -61,18 +62,15 @@ class Player::Computer_medium <Player
       "1"
     elsif !board.taken?("3")
       "3"
-    elsif !board.taken?("7")
-      "7"
-    elsif !board.taken?("9")
-      "9"
-    elsif !board.taken?("2")
-      "2"
-    elsif !board.taken?("4")
-      "4"
-    elsif !board.taken?("6")
-      "6"
-    elsif !board.taken?("8")
-      "8"
+    elsif 
+      one_move_away = WIN_COMBINATIONS.find do |line|
+        (board.cells[line[0]] == "X" && board.cells[line[1]] == "X" && board.cells[line[2]] == " ") ||
+        (board.cells[line[0]] == "X" && board.cells[line[2]] == "X" && board.cells[line[1]] == " ") ||
+        (board.cells[line[1]] == "X" && board.cells[line[2]] == "X" && board.cells[line[0]] == " ")
+      end
+        one_move_away.each.detect {|index| board.cells[index] = " "}
+       
+      
     end
   end  
 
