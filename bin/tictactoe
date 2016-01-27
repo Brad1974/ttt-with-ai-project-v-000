@@ -52,7 +52,7 @@ def player_options
     if input.chomp.strip == "0" || "1"
       computer_difficulty
 
-    elsif 
+    elsif input.chomp.strip == "2"
         puts "Player 1 V. Player 2!"
         game = Game.new(player_1 = Player::Human.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
         game.play
