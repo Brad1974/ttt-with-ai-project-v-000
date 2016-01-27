@@ -1,6 +1,12 @@
+require_relative '../config/environment'
+require_relative '../lib/players/computer.rb'
+require_relative '../lib/players/human.rb'
+require_relative '../lib/board.rb'
+
 class Game 
 
   attr_accessor :board, :player_1, :player_2
+  attr_reader :board
 
   WIN_COMBINATIONS = [
     [0,1,2],
@@ -19,9 +25,7 @@ class Game
     @board = board
   end
 
-  def board
-    @board
-  end
+  
 
   def current_player
     board.turn_count.even? ? player_1 : player_2
@@ -54,7 +58,7 @@ class Game
   
     def turn 
       puts "#{current_player} it's your turn!"
-      sleep 1
+      sleep 0
       input = current_player.move(board)
       if board.valid_move?(input)
         board.update(input, current_player)
