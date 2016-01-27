@@ -68,8 +68,9 @@ class Player::Computer_medium <Player
         (board.cells[line[0]] == "X" && board.cells[line[2]] == "X" && board.cells[line[1]] == " ") ||
         (board.cells[line[1]] == "X" && board.cells[line[2]] == "X" && board.cells[line[0]] == " ")
       end
-        one_move_away.each.detect {|index| board.cells[index] = " "}
-       
+       number =  one_move_away.each.detect {|index| board.cells[index] = " "}
+       correct_placement = number.to_i + 1
+       correct_placement.to_s
       
     end
   end  
