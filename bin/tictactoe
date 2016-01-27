@@ -8,19 +8,54 @@ require_relative '../lib/board.rb'
 
 def player_options
   puts "Welcome to OsTrItCh-TAC-TOE!"
-  puts "Will this be a 0, 1, or 2 player game?"
-  input = gets
+
+
+sleep 0
+puts "                                  (oo)
+                                    V
+                                    ||
+                                    ||
+                                    ||,-v-,_
+                                    ||) |   /
+                                _,''   '-,-<
+                               / :       /  ) 
+                              ( :       (   /,
+                               )_;       ) __)
+                                  ),_ ,   |
+                                  |  / )  |
+                                  | /   ) |
+                                  ()     ()
+                                  //     ||
+                                 //      ||
+                                //       ||
+                  -- '' -'-'  ,//        /)   -- '' -'-'   "
+
+puts "Will you be playing with 0 players (2 ostritches duking it out), 1 player vs. against an ostritch, or 2 human players? Type in a number to continue."
+  input = gets 
+
+puts "Player 1 is X and Player 2 is O!"
+sleep 1
+puts "Before you begin please remember while playing to select a grid number corresponding to the chart"
+
+puts " 1 | 2 | 3 "
+puts "-----------" 
+puts " 4 | 5 | 6 "
+puts "-----------"
+puts " 7 | 8 | 9 "
+sleep 3
+
   if input.chomp.strip == "0"
-      
-      game = Game.new(computer = Player::Computer.new("X"), computer = Player::Computer.new("O"), board = Board.new)
+      puts "Ostrich Battle Royale!"
+      game = Game.new(player_1 = Player::Computer.new("X"), player_2 = Player::Computer.new("O"), board = Board.new)
       game.play
 
   elsif input.chomp.strip == "1"
-      
+      puts "Ostrich V. Player 2!"
       game = Game.new(computer = Player::Computer.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
       game.play
 
   elsif input.chomp.strip == "2"
+      puts "Player 1 V. Player 2!"
       game = Game.new(player_1 = Player::Human.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
       game.play
   end
