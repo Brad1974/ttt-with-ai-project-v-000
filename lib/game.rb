@@ -47,19 +47,14 @@ class Game
   end
 
   def winner
-    WIN_COMBINATIONS.detect do |combo|
-      if combo.all? {|position| board.cells[position] == "X"}  
-        return "X"
-      elsif combo.all? {|position| board.cells[position] == "O"} 
-        return "O"
-      else
-      end
-    end
+   if won?
+     board.cells[won?.first]
+   end
   end
   
     def turn 
       puts "#{current_player.token} it's your turn!"
-      sleep 2
+      sleep 1
       input = current_player.move(board)
       if board.valid_move?(input)
         board.update(input, current_player)
