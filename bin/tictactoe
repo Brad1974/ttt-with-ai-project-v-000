@@ -6,26 +6,34 @@ require_relative '../lib/players/computer.rb'
 require_relative '../lib/players/human.rb'
 require_relative '../lib/board.rb'
 
+def player_options
+  puts "Welcome to OsTrItCh-TAC-TOE!"
+  puts "Will this be a 0, 1, or 2 player game?"
+  input = gets
+  if input.chomp.strip == "0"
+      
+      game = Game.new(computer = Player::Computer.new("X"), computer = Player::Computer.new("O"), board = Board.new)
+      game.play
 
-puts "Welcome to OsTrItCh-TAC-TOE!"
-puts "Will this be a 1 or 2 player game?"
-input = gets
-if input.chomp.strip == "1"
-    
-    game = Game.new(player_1 = Player::Computer.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
-    game.play
+  elsif input.chomp.strip == "1"
+      
+      game = Game.new(computer = Player::Computer.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
+      game.play
 
-elsif input.chomp.strip == "2"
-    game = Game.new
-    game.play
+  elsif input.chomp.strip == "2"
+      game = Game.new(player_1 = Player::Human.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
+      game.play
+  end
 end
+
+player_options
+
 puts "Would you like to play again?"
 input = gets.strip
 
 if input == "yes"
 
-  game = Game.new
-  game.play
+  player_options
 
 elsif input == "no"
   puts "See you next time!"

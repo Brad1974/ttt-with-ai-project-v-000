@@ -15,24 +15,18 @@ class Player::Computer <Player
   ]
 
   def move(board)
-     WIN_COMBINATIONS.select do |combo|
-      if combo[0,1,2] == board.cells["X", "X", " "]
-          return combo[2]
-      elsif combo[0,1,2] == board.cells[" ", "X", "X"]
-          return combo[0]
-      elsif combo[0,1,2] == board.cells["X", " ", "X"]
-          return combo[1]
-      elsif combo[0,1,2] == board.cells["O", "O", " "]
-          return combo[2]
-      elsif combo[0,1,2] == board.cells[" ", "O", "O"]
-          return combo[0]
-      elsif combo[0,1,2] == board.cells["O", " ", "O"]
-          return combo[1]
-      else 
-        false
-      end
+    if !board.taken?("5")
+      "5"
+    elsif !board.taken?("1")
+      "1"
+    elsif !board.taken?("3")
+      "3"
+    elsif !board.taken?("7")
+      "7"
+    elsif !board.taken?("9")
+      "9"
     end
-  end
+  end  
 
 
 end
