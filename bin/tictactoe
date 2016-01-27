@@ -6,13 +6,11 @@ require_relative '../lib/players/computer.rb'
 require_relative '../lib/players/human.rb'
 require_relative '../lib/board.rb'
 
+def player_options
+  puts "Welcome to OsTrItCh-TAC-TOE!"
 
-puts "Welcome to Tic-Tac-Toe!"
 
-sleep 1
-
-puts "Will you be playing against someone else? Or against this ostritch?"
-sleep 1
+sleep 0
 puts "                                  (oo)
                                     V
                                     ||
@@ -31,30 +29,46 @@ puts "                                  (oo)
                                  //      ||
                                 //       ||
                   -- '' -'-'  ,//        /)   -- '' -'-'   "
-sleep 1
-puts "Against someone else it is!"
-sleep 1
+
+puts "Will you be playing with 0 players (2 ostritches duking it out), 1 player vs. against an ostritch, or 2 human players? Type in a number to continue."
+  input = gets 
+
 puts "Player 1 is X and Player 2 is O!"
 sleep 1
-puts "Please select a grid number corresponding to the chart"
+puts "Before you begin please remember while playing to select a grid number corresponding to the chart"
 
 puts " 1 | 2 | 3 "
 puts "-----------" 
 puts " 4 | 5 | 6 "
 puts "-----------"
 puts " 7 | 8 | 9 "
-sleep 1
+sleep 3
 
-game = Game.new
-game.play
+  if input.chomp.strip == "0"
+      puts "Ostrich Battle Royale!"
+      game = Game.new(player_1 = Player::Computer.new("X"), player_2 = Player::Computer.new("O"), board = Board.new)
+      game.play
+
+  elsif input.chomp.strip == "1"
+      puts "Ostrich V. Player 2!"
+      game = Game.new(computer = Player::Computer.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
+      game.play
+
+  elsif input.chomp.strip == "2"
+      puts "Player 1 V. Player 2!"
+      game = Game.new(player_1 = Player::Human.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
+      game.play
+  end
+end
+
+player_options
 
 puts "Would you like to play again?"
 input = gets.strip
 
 if input == "yes"
 
-  game = Game.new
-  game.play
+  player_options
 
 elsif input == "no"
   puts "See you next time!"
