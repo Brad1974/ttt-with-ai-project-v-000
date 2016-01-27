@@ -32,6 +32,7 @@ class Player::Computer <Player
     elsif !board.taken?("6")
       "6"
     elsif !board.taken?("8")
+      "8"
     end
   end  
 
