@@ -86,7 +86,7 @@ require_relative '../lib/board.rb'
     def player_against_player
       puts "Mono E Mono!"
       puts "Player 1 V. Player 2!"
-      game = Game.new(player_1 = Player::Human.new("X"), player_2 = Player::Human.new("O"), board = Board.new)
+      game = Game.new(player_1 = Player::Human.new(token), player_2 = Player::Human.new(opponents_token), board = Board.new)
       game.play
     end
 
