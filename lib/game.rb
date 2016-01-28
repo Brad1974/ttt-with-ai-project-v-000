@@ -53,7 +53,7 @@ class Game
   end
   
     def turn 
-      puts "#{current_player.token} it's your turn!"
+      puts "#{current_player} it's your turn!"
       sleep 1
       input = current_player.move(board)
       if board.valid_move?(input)
