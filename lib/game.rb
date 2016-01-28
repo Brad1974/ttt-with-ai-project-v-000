@@ -33,7 +33,7 @@ class Game
   end
 
   def over?
-    draw?  || won?
+    draw? || won?
   end
 
   def won?
@@ -46,29 +46,29 @@ class Game
     board.full? && !won?
   end
 
+  
   def winner
    if won?
      board.cells[won?.first]
    end
   end
   
-    def turn 
-      puts "#{current_player} it's your turn!"
-      sleep 1
+  def turn 
+      puts "#{current_player.token} it's your turn!"
       input = current_player.move(board)
       if board.valid_move?(input)
         board.update(input, current_player)
       else
-        turn
+        self.turn
     end 
   end
 
  def play
    until over? 
       turn
-    end
+   end
     if draw? 
-     puts "Cats Game!"
+      puts "Cats Game!"
     elsif won? 
       puts "Congratulations #{winner}!"
     end

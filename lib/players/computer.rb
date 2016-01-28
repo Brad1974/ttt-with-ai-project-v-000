@@ -1,7 +1,6 @@
 require 'pry'
-
-class Player::Computer_easy <Player
-
+class Player::Computer_easy < Player
+  
   attr_accessor :board
 
  WIN_COMBINATIONS = [
@@ -14,33 +13,16 @@ class Player::Computer_easy <Player
     [0,4,8],
     [6,4,2]
   ]
-
+  
   def move(board)
-    if    !board.taken?("5")
-      "5"
-    elsif !board.taken?("1")
-      "1"
-    elsif !board.taken?("3")
-      "3"
-    elsif !board.taken?("7")
-      "7"
-    elsif !board.taken?("9")
-      "9"
-    elsif !board.taken?("2")
-      "2"
-    elsif !board.taken?("4")
-      "4"
-    elsif !board.taken?("6")
-      "6"
-    elsif !board.taken?("8")
-      "8"
-    end
-  end  
+    basic_move(board)
+  end
 
-
+ def basic_move(board)
+   %w(1 2 3 4 5 6 7 8 9).shuffle.find { |i| !board.taken?(i)}
+ end 
 end
-
-class Player::Computer_hard <Player
+class Player::Computer_hard < Player
   
   attr_accessor :board
   
@@ -70,13 +52,12 @@ class Player::Computer_hard <Player
     end
   end
   
-def basic_move(board)
-   %w(5 1 3 7 9 2 4 6 8).shuffle.find { |i| !board.taken?(i)}
- end
+  def basic_move(board)
+   %w(5 1 3 7 9 2 4 6 8).find { |i| !board.taken?(i)}
+  end
   
   def move(board)
     make_winning_move(board) || block_winning_move(board) || basic_move(board)
   end
    
 end
- 
