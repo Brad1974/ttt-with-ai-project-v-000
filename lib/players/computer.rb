@@ -1,27 +1,12 @@
-require 'pry'
 class Player::Computer_easy < Player
   
   attr_accessor :board
-
- WIN_COMBINATIONS = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [6,4,2]
-  ]
   
   def move(board)
-    basic_move(board)
+    %w(1 2 3 4 5 6 7 8 9).shuffle.find { |i| !board.taken?(i)}
   end
-
- def basic_move(board)
-   %w(1 2 3 4 5 6 7 8 9).shuffle.find { |i| !board.taken?(i)}
- end 
 end
+
 class Player::Computer_hard < Player
   
   attr_accessor :board
@@ -59,5 +44,5 @@ class Player::Computer_hard < Player
   def move(board)
     make_winning_move(board) || block_winning_move(board) || basic_move(board)
   end
-   
+  
 end
